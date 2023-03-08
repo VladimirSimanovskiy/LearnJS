@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 1.7.1</title>
+</head>
+<body>
+  <div id="first">Начальный текст</div>
+  <div id="second">Начальный текст</div>
+  <div id="third">Начальный текст</div>
+  <script>
+    let text = '<b>Добавленный текст</b>';
+    first.append(document.createTextNode(text));
+    second.innerHTML = text;
+    third.textContent = text;
+    // все 3 способа работают по-разному:
+    // первый добавляет текст к уже существующему
+    // второй вместо содержимого добавляет HTML
+    // третий вместо содержимого добавляет текст
+  </script>
+</body>
+</html>

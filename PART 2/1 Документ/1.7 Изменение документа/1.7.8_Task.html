@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 1.7.8</title>
+</head>
+<body>
+  <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span><br>
+  <button id="Start">Start</button>
+  <button id="Stop">Stop</button>
+
+  <script>
+      hours.style.color = "red";
+      minutes.style.color = "green";
+      seconds.style.color = "blue";
+
+      let watchON = false;
+      let timer;
+
+      render();
+      switchWatch();
+
+      function render(){
+          let date = new Date();
+
+          hours.innerHTML = editTime(date.getHours());
+          minutes.innerHTML = editTime(date.getMinutes());
+          seconds.innerHTML = editTime(date.getSeconds());
+      }
+
+      function editTime(n){
+          return n < 10 ? "0" + n : n;
+      }
+
+
+      function switchWatch(){
+          if(!watchON){
+              timer = setInterval(render, 1000);
+              watchON = !watchON;
+          }
+      }
+
+      Start.onclick = () => switchWatch();
+      Stop.onclick = () => {
+          clearInterval(timer);
+          watchON = false;
+      }
+  </script>
+</body>
+</html>

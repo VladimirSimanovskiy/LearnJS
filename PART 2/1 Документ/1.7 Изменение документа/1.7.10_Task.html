@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 1.7.10</title>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th><th>Surname</th><th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td><td>Smith</td><td>10</td>
+      </tr>
+      <tr>
+        <td>Pete</td><td>Brown</td><td>15</td>
+      </tr>
+      <tr>
+        <td>Ann</td><td>Lee</td><td>5</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function sortByName() {
+
+    let trs = document.querySelectorAll('tr');
+
+    let mas = Array.from(trs);
+    mas.splice(0, 1);
+
+    mas.sort((a, b) => {
+
+      let tdA = a.querySelector('td').textContent;
+      let tdB = b.querySelector('td').textContent;
+
+      if (tdA < tdB) {
+        
+        a.after(b);
+        return 1;
+      
+      } else if (tdA > tdB) {
+        
+        b.after(a);
+        return -1;
+      
+      }
+
+      return 0;
+
+    })
+    }
+
+    sortByName();
+  </script>
+</body>
+</html>
