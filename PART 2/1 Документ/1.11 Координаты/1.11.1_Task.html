@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="1.11.1_style.css">
+  <script>
+    document.onclick = function(e) { // показывает координаты точки клика
+      coords.innerHTML = e.clientX + ':' + e.clientY;
+    };
+  </script>
+</head>
+
+<body>
+
+  Кликните в любом месте для получения координат в контексте окна.
+  <br> Это для тестирования, чтобы проверить результат, который вы получили с помощью JavaScript.
+  <br>
+  <div id="coords">(координаты покажутся здесь)</div>
+
+
+  <div id="field">
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+  </div>
+
+
+  <div class="triangle-right" style="left:-20px;top:-176px">1</div>
+  <div class="triangle-right" style="left:-10px;top:-178px">3</div>
+  <div class="triangle-right" style="left:190px;top:-40px">4</div>
+  <div class="triangle-right" style="left:200px;top:-42px">2</div>
+
+
+  <script>
+    let result = document.createElement('div');
+
+    let externalCoords = field.getBoundingClientRect();
+    let x1 = Math.floor(externalCoords.left);
+    let y1 = Math.floor(externalCoords.top);
+    let x2 = Math.floor(externalCoords.right);
+    let y2 = Math.floor(externalCoords.bottom);
+    let x3 = Math.floor(externalCoords.left + field.clientLeft);
+    let y3 = Math.floor(externalCoords.top + field.clientTop);
+    let x4 = Math.floor(externalCoords.right - field.clientLeft);
+    let y4 = Math.floor(externalCoords.bottom - field.clientTop);
+
+    let coord1 = `верхний левый, внешний угол: ${x1}:${y1}`;
+    let coord2 = `нижний правый, внешний угол: ${x2}:${y2}`;
+    let coord3 = `верхний левый, внутренний угол: ${x3}:${y3}`;
+    let coord4 = `нижний правый, внутренний угол: ${x4}:${y4}`;
+
+
+    result.innerHTML = `${coord1}<br>${coord2}<br>${coord3}<br>${coord4}`;
+    document.body.append(result);
+  </script>
+
+</body>
+</html>
