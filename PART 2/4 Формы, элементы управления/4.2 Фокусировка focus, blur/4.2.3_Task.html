@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    #mouse {
+      display: inline-block;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    #mouse:focus {
+      outline: 1px dashed black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p>Кликните по "изображению" мыши и перемещайте её с помощью клавиш со стрелками.</p>
+
+  <pre id="mouse">
+ _   _
+(q\_/p)
+ /. .\
+=\_t_/=   __
+ /   \   (
+((   ))   )
+/\) (/\  /
+\  Y  /-'
+ nn^nn
+</pre>
+
+
+  <script>
+
+    let right = 0, down = mouse.offsetTop, toMouse = mouse.offsetTop;
+
+    mouse.onclick = function() {
+      this.tabIndex = 0;
+
+      this.focus();
+
+      this.style.position = "absolute";      
+
+      mouse.onkeydown = function(e) {
+        if (e.key == "ArrowRight") {
+          right += 20;
+          if (right > document.documentElement.clientWidth - mouse.offsetWidth) right = document.documentElement.clientWidth - mouse.offsetWidth;
+          mouse.style.left = right + "px"
+        }
+
+        if (e.key == "ArrowLeft") {
+          right -= 20;
+          if (right < 0) right = 0;
+          mouse.style.left = right + "px"
+        }
+
+        if (e.key == "ArrowDown") {
+          down += 20;
+          if (down > document.documentElement.clientHeight - mouse.offsetHeight) down = document.documentElement.clientHeight - mouse.offsetHeight;
+          mouse.style.top = down + "px"
+        }
+
+        if (e.key == "ArrowUp") {
+          down -= 20;
+          if (down < toMouse) down = toMouse;
+          mouse.style.top = down + "px"
+        }
+      }
+
+    }
+  </script>
+
+</body>
+
+</html>
