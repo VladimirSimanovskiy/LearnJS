@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Документ</title>
+  <link rel="stylesheet" href="3.2.2_style.css">
+</head>
+<body>
+
+  <div data-tooltip="Подсказка" id="elem" class="clock">
+    <span class="hours">12</span> :
+    <span class="minutes">30</span> :
+    <span class="seconds">00</span>
+  </div>
+
+  <script>
+   
+  
+   
+  elem.addEventListener('mouseleave', mouseoff);
+  elem.addEventListener('mouseenter', mouseon);
+
+    let interval;
+    let targ = null;
+
+    function mouseoff(event) {
+      let target = event.target;
+      
+      clearTimeout(interval);
+
+      if (target.tagName != "DIV") return;     
+      for (let i of document.querySelectorAll(".tooltip")) {
+        i.remove();
+      }
+    }
+
+    function mouseon(event) {
+      let target = event.target; 
+      if (target.tagName != "DIV") return;
+
+      interval = setTimeout(function() {
+        let suggest = document.createElement('div');
+        suggest.innerText = target.dataset.tooltip;
+        suggest.className = "tooltip";
+        document.body.append(suggest);
+        targ = target.dataset.tooltip;
+      }, 300);
+    }
+
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3.4.1</title>
+</head>
+<body>
+
+
+
+  <script>
+    function runOnKeys(func, ...codes) {
+      let currentKeys = [];
+
+      document.addEventListener("keydown", function (e) {
+
+      currentKeys.push(e.code);
+      let keys = [];
+      keys.push(...codes);
+
+      let keysDowns = false;
+
+      for (let key of keys) {
+        if (currentKeys.includes(key)) {
+          keysDowns = true;
+        } else {
+          keysDowns = false;
+          break;
+        }
+      }
+
+      if (keysDowns) {
+        func();
+        currentKeys = [];
+      }
+    });
+
+    document.addEventListener("keyup", function () {
+    currentKeys = [];
+    });
+  }
+
+  runOnKeys(
+    () => alert("Привет!"),
+    "KeyQ",
+    "KeyW"
+  );
+
+  </script>
+  
+</body>
+</html>
